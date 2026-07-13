@@ -1,0 +1,15 @@
+---
+import { offers } from "../data/offers";
+---
+
+<div class="marquee" role="region" aria-label="Current offers">
+  <p class="visually-hidden">{offers.join(" — ")}</p>
+  <div class="marquee__track" aria-hidden="true">
+    <div class="marquee__group">
+      {offers.map((o) => <span class="marquee__item">{o}</span>)}
+    </div>
+    <div class="marquee__group">
+      {offers.map((o) => <span class="marquee__item">{o}</span>)}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  subhead?: string;
+}
+const { eyebrow, title, subhead } = Astro.props;
+---
+
+<section class="hero hero--compact">
+  <div class="container">
+    <div class="hero__content">
+      <Eyebrow class="hero__eyebrow">{eyebrow}</Eyebrow>
+      <h1 class="h-hero hero__title">{title}</h1>
+      {subhead && <p class="lead hero__subhead">{subhead}</p>}
+    </div>
+  </div>
+</section>

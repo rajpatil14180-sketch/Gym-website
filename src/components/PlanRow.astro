@@ -1,0 +1,16 @@
+---
+interface Props {
+  name: string;
+  meta: string;
+  price: number;
+}
+const { name, meta, price } = Astro.props;
+---
+
+<div class="plan-row reveal">
+  <div>
+    <div class="plan-row__name">{name}</div>
+    <div class="plan-row__meta">{meta}</div>
+  </div>
+  <div class="plan-row__price">₹{price.toLocaleString("en-IN")}</div>
+</div>

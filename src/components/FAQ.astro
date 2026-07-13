@@ -1,0 +1,40 @@
+---
+interface FaqItem {
+  q: string;
+  a: string;
+}
+interface Props {
+  items: FaqItem[];
+}
+const { items } = Astro.props;
+---
+
+<div class="faq js-faq">
+  {items.map((item, i) => (
+    <div class="faq-item">
+      <h3>
+        <button
+          class="faq-item__trigger"
+          aria-expanded="false"
+          aria-controls={`faq-panel-${i}`}
+          id={`faq-trigger-${i}`}
+        >
+          <span>{item.q}</span>
+          <span class="faq-item__icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="faq-item__panel"
+        id={`faq-panel-${i}`}
+        role="region"
+        aria-labelledby={`faq-trigger-${i}`}
+      >
+        <div class="faq-item__panel-inner">
+          <p>{item.a}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script src="../scripts/accordion.js"></script>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+const { value, label, suffix = "" } = Astro.props;
+const numericMatch = value.match(/^([₹]?)(\d+)$/);
+---
+
+<div class="stat reveal">
+  <div class="stat__value">
+    {numericMatch ? (
+      <span
+        class="js-counter"
+        data-prefix={numericMatch[1]}
+        data-target={numericMatch[2]}
+        data-suffix={suffix}
+      >
+        {numericMatch[1]}0{suffix}
+      </span>
+    ) : (
+      <span>{value}{suffix}</span>
+    )}
+  </div>
+  <div class="stat__label">{label}</div>
+</div>

@@ -1,0 +1,20 @@
+---
+interface Props {
+  alt?: boolean;
+  bordered?: boolean;
+  tight?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const { alt = false, bordered = false, tight = false, id, class: className = "" } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={["section", { "section--alt": alt, "section--bordered": bordered, "section--tight": tight }, className]}
+>
+  <div class="container">
+    <slot />
+  </div>
+</section>

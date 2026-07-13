@@ -1,0 +1,202 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-inline: var(--content-pad);
+}
+
+/* ---------- typography helpers ---------- */
+
+.h-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--cream);
+}
+
+.h-hero {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--fs-hero);
+  line-height: 0.88;
+  letter-spacing: var(--ls-display);
+  color: var(--cream);
+}
+
+.h-section {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--fs-h2);
+  line-height: 0.96;
+  letter-spacing: var(--ls-display);
+  color: var(--cream);
+}
+
+.h-sub {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--fs-h3);
+  line-height: 0.98;
+  letter-spacing: var(--ls-display);
+  color: var(--cream);
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--charcoal);
+  line-height: var(--lh-body);
+}
+
+.body-sm {
+  font-size: var(--fs-body-sm);
+  color: var(--charcoal);
+}
+
+/* ---------- scroll reveal ---------- */
+
+/*
+  Content is visible by default so a failed/slow script load, or reduced-motion
+  users, never lose it. animations.js (GSAP) opts elements into the
+  hidden-then-fade-up state itself via inline styles once it confirms it's
+  running, so no CSS hidden state is needed here.
+*/
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- visually hidden (a11y) ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  z-index: 999;
+  transition: top var(--dur-fast) var(--ease-out);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}

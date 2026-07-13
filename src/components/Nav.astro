@@ -1,0 +1,37 @@
+---
+import { site, waLink } from "../data/site";
+import Button from "./Button.astro";
+
+const currentPath = Astro.url.pathname;
+const isCurrent = (href) => (href === "/" ? currentPath === "/" : currentPath.startsWith(href));
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo">{site.wordmark}<span class="dot">.</span></a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {site.nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__actions">
+      <Button href="/contact" variant="primary">Claim Free Trial</Button>
+      <button class="nav__toggle js-nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-overlay">
+        <span class="nav__toggle-bars"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav__overlay js-nav-overlay" id="nav-overlay">
+  <nav aria-label="Mobile">
+    {site.nav.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+  <Button href="/contact" variant="primary" size="lg">Claim Free Trial</Button>
+</div>
+
+<script src="../scripts/nav.js"></script>

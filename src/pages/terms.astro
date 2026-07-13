@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import { site } from "../data/site";
+---
+
+<Base
+  title="Terms of Service — Unicorn Fitness"
+  description="The terms that apply when you use this website or become a member at Unicorn Fitness."
+>
+  <Section tight>
+    <div style="max-width: 720px; margin-inline:auto; padding-block: var(--space-16);">
+      <Eyebrow>Legal</Eyebrow>
+      <h1 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-8);">Terms of Service</h1>
+
+      <p class="body-sm" style="color: var(--ash); margin-bottom: var(--space-8);">
+        {/* NOTE(owner): covers the website itself plus a general health/safety and
+           jurisdiction stub. Have a professional review this, and supply the full
+           membership contract (cancellation, freeze, refund, liability waiver) that
+           members sign in person — a website page alone shouldn't be your only
+           liability waiver. */}
+        These terms cover your use of this website. Full membership terms are confirmed in person or on
+        WhatsApp before you join.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap: var(--space-6);">
+        <div>
+          <h2 class="h-sub">Using this website</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            This site is provided to give you information about Unicorn Fitness — our pricing, facilities, and
+            how to get in touch. By using it, you agree not to misuse it (e.g. attempting to disrupt the site
+            or access it in unauthorised ways).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Pricing & offers</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Prices shown are in Indian Rupees (₹) and are current at time of publishing but may change without
+            notice. The price you're quoted when you sign up is the one that applies to your membership —
+            please confirm final pricing, including any applicable taxes, with a coach before payment.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Membership terms</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Detailed membership terms — including cancellation, freeze, and refund policy — are confirmed in
+            person or on WhatsApp before you join.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Health & safety</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Physical exercise carries an inherent risk of injury. By training at Unicorn Fitness you confirm
+            you're medically fit to exercise, or have checked with a physician where needed. A full waiver and
+            safety guidelines are provided in person before your first session.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Governing law</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            These terms are governed by the laws of India. Any disputes are subject to the courts of Navi
+            Mumbai, Maharashtra.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Contact us</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Questions about these terms? Reach us at <a href={site.phoneHref} class="btn--text">{site.phone}</a> or
+            on <a href="/contact" class="btn--text">WhatsApp</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Base>

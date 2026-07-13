@@ -1,0 +1,24 @@
+---
+import PricingCard from "./PricingCard.astro";
+import { membershipPlans } from "../data/pricing";
+
+interface Props {
+  ctaHref?: string;
+  ctaLabel?: string;
+  showFoot?: boolean;
+}
+
+const { ctaHref = "/contact", ctaLabel = "Claim Free Trial Day", showFoot = false } = Astro.props;
+---
+
+<div class="pricing-grid">
+  {membershipPlans.map((plan) => (
+    <PricingCard plan={plan} ctaHref={ctaHref} ctaLabel={ctaLabel}>
+      {showFoot && plan.highlight && (
+        <Fragment slot="foot">
+          Personal training packages available separately — <a href="/personal-training" class="btn--text">see options →</a>
+        </Fragment>
+      )}
+    </PricingCard>
+  ))}
+</div>

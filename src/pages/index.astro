@@ -1,0 +1,220 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import Button from "../components/Button.astro";
+import Placeholder from "../components/Placeholder.astro";
+import PricingGrid from "../components/PricingGrid.astro";
+import FAQ from "../components/FAQ.astro";
+import CTASection from "../components/CTASection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Marquee from "../components/Marquee.astro";
+import { site, waLink } from "../data/site";
+import { journey, foundingFifty } from "../data/journey";
+import { homeFaqs } from "../data/faqs";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    name: site.name,
+    url: site.url,
+    telephone: site.phoneHref,
+    priceRange: "₹₹",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address.line1,
+      addressLocality: "Ghansoli, Navi Mumbai",
+      postalCode: "400701",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.address.geo.lat,
+      longitude: site.address.geo.lng,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  },
+];
+---
+
+<Base
+  title="Unicorn Fitness — 24/7 Gym in Ghansoli, Navi Mumbai | Free Trial Day"
+  description="Real coaching, real equipment, 24/7 access in Ghansoli, Navi Mumbai — from ₹32 a day. Claim a free trial day, no card required."
+  jsonLd={jsonLd}
+>
+  <!-- HERO -->
+  <section class="uf-hero" id="home">
+    <!-- z-1: headline (behind athlete) -->
+    <div class="uf-hero__headline">
+      <h1><span>Stop Starting</span><span class="uf-over">Over.</span></h1>
+    </div>
+
+    <!-- z-2: athlete cut-out (transparent PNG) -->
+    <div class="uf-hero__figure">
+      <img src="/assets/img/hero-athlete.png" alt="Athlete mid-workout" width="2752" height="1536" fetchpriority="high" />
+    </div>
+
+    <!-- z-3: sub-headline + CTAs (in front of athlete) -->
+    <div class="uf-hero__copy">
+      <div class="uf-hero__copy-inner">
+        <p class="uf-hero__lead">Just <strong>₹32 a day</strong> — real coaching, real equipment, and a floor that's open 24/7.</p>
+        <div class="uf-hero__actions">
+          <a class="uf-hero__btn" href={waLink("Hi Unicorn Fitness! I'd like to claim my free trial day.")} target="_blank" rel="noopener"><i class="fa-solid fa-arrow-right"></i> Claim Your Free Trial Day</a>
+          <a class="uf-hero__link" href={waLink("Hi Unicorn Fitness! I'd like to book a gym tour.")} target="_blank" rel="noopener">Book a Gym Tour <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="uf-hero__fine">No card required. No pressure to join.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS TICKER -->
+  <Marquee />
+
+  <!-- WHY US -->
+  <Section alt bordered>
+    <div class="split">
+      <Placeholder label="Head coach on the floor, mid-conversation with a member — not posing, not flexing" class="reveal" />
+      <div class="reveal">
+        <Eyebrow>Why Unicorn</Eyebrow>
+        <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
+          We Don't Hand You A Keycard And Disappear.
+        </h2>
+        <div style="display:flex; flex-direction:column; gap: var(--space-4);">
+          <p class="lead">Every member starts with a proper assessment and a plan. You'll never wonder what to do next.</p>
+          <p class="lead">Our coaches are on the floor, not hidden in an office — ask anything, any time you train.</p>
+          <p class="lead">Honest pricing: one yearly fee, no upsells, no surprises.</p>
+        </div>
+        <a href="/about" class="btn--text" style="margin-top: var(--space-6); display:inline-block;">Meet the coaches →</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- TWO PILLARS -->
+  <Section bordered>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <Placeholder label="Coach spotting a member on a lift" class="pillar__bg" />
+        <a href="/personal-training" class="pillar__link" aria-label="Explore Personal Training"></a>
+        <div class="pillar__body">
+          <h3 class="h-sub pillar__title">1 On 1 Personal Training</h3>
+          <p class="lead" style="margin-bottom: var(--space-4);">A plan built for your body, your schedule, your goal.</p>
+          <span class="btn--text">Explore Personal Training →</span>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <Placeholder label="Empty gym floor at night, lights on" class="pillar__bg" />
+        <a href="/the-gym" class="pillar__link" aria-label="See the facility"></a>
+        <div class="pillar__body">
+          <h3 class="h-sub pillar__title">24/7 Open Access</h3>
+          <p class="lead" style="margin-bottom: var(--space-4);">5 AM or midnight — the door opens for you.</p>
+          <span class="btn--text">See the facility →</span>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- THE PLAN -->
+  <Section alt bordered>
+    <div style="text-align:center; margin-bottom: var(--space-16);">
+      <Eyebrow>Getting Started</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Three Steps. That's It.</h2>
+    </div>
+    <div class="steps">
+      <div class="reveal">
+        <div class="step__num">01</div>
+        <p class="step__title">Come in for a free day.</p>
+        <p class="step__body">Train, look around, ask anything. No sales pitch.</p>
+      </div>
+      <div class="reveal">
+        <div class="step__num">02</div>
+        <p class="step__title">Get your starting plan.</p>
+        <p class="step__body">A coach assesses you and maps your first four weeks.</p>
+      </div>
+      <div class="reveal">
+        <div class="step__num">03</div>
+        <p class="step__title">Show up. We handle the rest.</p>
+        <p class="step__body">24/7 access plus coaching whenever you need it.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: var(--space-12);">
+      <Button href="/contact" variant="primary" size="lg">Start With Step 1 — It's Free</Button>
+    </div>
+  </Section>
+
+  <!-- YOUR FIRST 90 DAYS -->
+  <Section bordered class="journey-pin">
+    <div style="margin-bottom: var(--space-10);">
+      <Eyebrow>What Happens Next</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Here's Exactly What Happens.</h2>
+    </div>
+    <div class="carousel__viewport">
+      <div class="carousel">
+        {journey.map((step) => (
+          <div class="carousel__card">
+            <Placeholder label={`${step.tag} placeholder image`} as="figure" />
+            <div class="carousel__body">
+              <p class="h-display carousel__name">{step.tag}</p>
+              <p class="carousel__sub mono">{step.sub}</p>
+              <p class="carousel__result">{step.result}</p>
+              <p class="carousel__quote">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- THE FOUNDING FIFTY -->
+  <Section alt bordered>
+    <div style="text-align:center; margin-bottom: var(--space-16);">
+      <Eyebrow>Membership</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">You're Early. That's The Point.</h2>
+    </div>
+    <div class="card-grid">
+      {foundingFifty.map((item) => (
+        <div class="card reveal">
+          <p class="card__title">{item.title}</p>
+          <p class="body-sm">{item.body}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mono reveal" style="text-align:center; margin-top: var(--space-10); color: var(--ash); font-size: 13px;">
+      We opened on 1 July 2026. Reviews will come from real members — not from us.
+    </p>
+  </Section>
+
+  <!-- PRICING -->
+  <Section bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <Eyebrow>Membership</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Same Access. Your Timeline.</h2>
+    </div>
+    <PricingGrid showFoot />
+    <p class="body-sm reveal" style="text-align:center; margin-top: var(--space-6); color: var(--ash);">
+      The 20% Monsoon Offer applies to the Yearly package only. Other lengths are at regular price —
+      <a href="/membership" class="btn--text">see full details →</a>
+    </p>
+  </Section>
+
+  <!-- FAQ -->
+  <Section alt bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <h2 class="h-section reveal">Questions, Answered.</h2>
+    </div>
+    <div style="max-width: 800px; margin-inline: auto;">
+      <FAQ items={homeFaqs} />
+    </div>
+  </Section>
+
+  <!-- FINAL CTA -->
+  <CTASection heading="Everyone You Admire Started On Day One." />
+
+  <!-- CONTACT -->
+  <ContactSection />
+</Base>

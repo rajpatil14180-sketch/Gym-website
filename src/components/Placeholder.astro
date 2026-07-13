@@ -1,0 +1,23 @@
+---
+interface Props {
+  label: string;
+  class?: string;
+  as?: "div" | "figure" | "button";
+  category?: string;
+}
+const { label, class: className = "", as = "div", category } = Astro.props;
+const Tag = as;
+---
+
+<Tag
+  class:list={["placeholder", className]}
+  role={as === "button" ? undefined : "img"}
+  aria-label={label}
+  type={as === "button" ? "button" : undefined}
+  data-category={category}
+>
+  <span class="placeholder__label" aria-hidden="true">
+    <i class="fa-regular fa-image"></i><br />
+    {label}
+  </span>
+</Tag>

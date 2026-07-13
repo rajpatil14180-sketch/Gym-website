@@ -1,0 +1,75 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import PageHero from "../components/PageHero.astro";
+import PricingGrid from "../components/PricingGrid.astro";
+import FAQ from "../components/FAQ.astro";
+import CTASection from "../components/CTASection.astro";
+import { dayPass, included, notIncluded } from "../data/pricing";
+import { membershipFaqs } from "../data/faqs";
+---
+
+<Base
+  title="Membership — Unicorn Fitness"
+  description="One yearly price, no hidden charges. See every membership option and exactly what's included."
+>
+  <PageHero
+    eyebrow="Membership"
+    title="Pick Your Plan."
+    subhead="One honest price for full access. Pick the length that fits your budget — the coaching and access don't change."
+  />
+
+  <Section>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <Eyebrow>Plans</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Every Membership Length</h2>
+      <p class="body-sm reveal" style="margin-top: var(--space-4); color: var(--ash);">
+        The 20% Monsoon Offer applies to the Yearly package only — Half Yearly, Quarterly, and Monthly are at
+        regular price.
+      </p>
+    </div>
+    <PricingGrid showFoot />
+  </Section>
+
+  <Section alt bordered>
+    <div class="split">
+      <div class="reveal">
+        <Eyebrow>Just Visiting</Eyebrow>
+        <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
+          {dayPass.name} — ₹{dayPass.price}
+        </h2>
+        <p class="lead">{dayPass.description}</p>
+        <p class="body-sm" style="margin-top: var(--space-4); color: var(--ash);">{dayPass.meta}</p>
+      </div>
+      <div class="card reveal">
+        <p class="card__title">What's Included In Every Membership</p>
+        <ul style="margin-top: var(--space-5); display:flex; flex-direction:column; gap: var(--space-3);">
+          {included.map((item) => (
+            <li style="display:flex; align-items:flex-start; gap: var(--space-3);">
+              <i class="fa-solid fa-check" style="color:var(--accent); margin-top:4px;" aria-hidden="true"></i>
+              <span class="body-sm">{item}</span>
+            </li>
+          ))}
+          {notIncluded.map((item) => (
+            <li style="display:flex; align-items:flex-start; gap: var(--space-3);">
+              <i class="fa-solid fa-xmark" style="color:var(--ash); margin-top:4px;" aria-hidden="true"></i>
+              <span class="body-sm" style="color:var(--ash);">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <h2 class="h-section reveal">Membership, Answered.</h2>
+    </div>
+    <div style="max-width: 800px; margin-inline: auto;">
+      <FAQ items={membershipFaqs} />
+    </div>
+  </Section>
+
+  <CTASection heading="Your First Day Is Free. See For Yourself." />
+</Base>

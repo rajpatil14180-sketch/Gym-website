@@ -1,0 +1,52 @@
+---
+import { site } from "../data/site";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">{site.wordmark}<span class="dot">.</span></div>
+        <p class="footer__blurb">{site.tagline}</p>
+      </div>
+
+      <div>
+        <p class="footer__heading">Quick Links</p>
+        <div class="footer__links">
+          {site.nav.slice(1).map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p class="footer__heading">Visit Us</p>
+        <p class="footer__blurb">{site.address.line1},<br />{site.address.line2}</p>
+        <a href={site.address.mapsUrl} class="btn--text" target="_blank" rel="noopener">Open in Google Maps →</a>
+        {site.hoursOpen24_7 && (
+          <div class="footer__badge"><span class="status-dot" aria-hidden="true"></span> Open 24/7</div>
+        )}
+        <p><a href={site.phoneHref}>{site.phone}</a></p>
+      </div>
+
+      <div>
+        <p class="footer__heading">Still Thinking?</p>
+        <p class="footer__blurb">Come see it first. No commitment.</p>
+        <a href="/contact" class="btn btn--ghost">Book a Free Tour</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {currentYear} {site.name}. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        {site.social.instagram && site.social.instagram !== "#" && (
+          <a href={site.social.instagram} target="_blank" rel="noopener">Instagram</a>
+        )}
+      </div>
+    </div>
+  </div>
+</footer>

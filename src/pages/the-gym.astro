@@ -1,0 +1,86 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import PageHero from "../components/PageHero.astro";
+import Placeholder from "../components/Placeholder.astro";
+import CTASection from "../components/CTASection.astro";
+import { gallery, galleryCategories, equipment, facilities } from "../data/gallery";
+---
+
+<Base
+  title="The Gym — Unicorn Fitness"
+  description="A look at the floor, the equipment, and the facilities at Unicorn Fitness. Open 24/7 in Ghansoli, Navi Mumbai."
+>
+  <PageHero
+    eyebrow="The Gym"
+    title="Everything You Need. Nothing You Don't."
+    subhead="Free weights, cardio, a full functional rig, and a floor that's actually open when you are."
+  />
+
+  <Section>
+    <div class="js-gallery">
+      <div class="gallery-filters" role="group" aria-label="Filter gallery by category">
+        {galleryCategories.map((cat, i) => (
+          <button type="button" class="gallery-filter" data-filter={cat} aria-pressed={i === 0 ? "true" : "false"}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="gallery-grid">
+        {gallery.map((item) => (
+          <Placeholder as="button" label={item.shot} category={item.category} class="reveal" />
+        ))}
+      </div>
+
+      <div class="lightbox js-lightbox" aria-hidden="true">
+        <div class="lightbox__frame">
+          <button type="button" class="lightbox__close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <button type="button" class="lightbox__prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+          <button type="button" class="lightbox__next" aria-label="Next photo"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          <div class="placeholder" style="aspect-ratio: 4 / 3; min-height: 320px; width: 100%;">
+            <span class="placeholder__label" aria-hidden="true">
+              <i class="fa-regular fa-image"></i><br />
+              <span class="js-lightbox-label"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section alt bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <Eyebrow>Equipment</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">What's On The Floor</h2>
+    </div>
+    <div class="icon-grid">
+      {equipment.map((item) => (
+        <div class="icon-item reveal">
+          <div class="icon-item__glyph"><i class={item.glyph} aria-hidden="true"></i></div>
+          <p class="body-sm">{item.label}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <Eyebrow>Facilities</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Beyond The Weights</h2>
+    </div>
+    <div class="icon-grid">
+      {facilities.map((item) => (
+        <div class="icon-item reveal">
+          <div class="icon-item__glyph"><i class={item.glyph} aria-hidden="true"></i></div>
+          <p class="body-sm">{item.label}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <CTASection heading="See It In Person. Book A Free Tour." ctaLabel="Book a Gym Tour" />
+
+  <script src="../scripts/gallery.js"></script>
+</Base>

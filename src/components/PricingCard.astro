@@ -1,0 +1,58 @@
+---
+import Button from "./Button.astro";
+import { membershipFeatures } from "../data/pricing";
+
+interface Plan {
+  name: string;
+  unit: string;
+  price: number;
+  perMonth: number;
+  perDay: number;
+  badge?: string | null;
+  tagline?: string | null;
+  highlight?: boolean;
+}
+
+interface Props {
+  plan: Plan;
+  features?: string[];
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const {
+  plan,
+  features = membershipFeatures,
+  ctaHref = "/contact",
+  ctaLabel = "Claim Free Trial Day",
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "pricing-card reveal",
+    { "pricing-card--highlight": plan.highlight, "pricing-card--flat": !plan.highlight },
+  ]}
+>
+  {plan.badge ? (
+    <span class="pricing-card__badge">{plan.badge}</span>
+  ) : (
+    <p class="pricing-card__name">{plan.name}</p>
+  )}
+  <div class="pricing-card__price">
+    ₹{plan.price.toLocaleString("en-IN")}<span class="pricing-card__unit"> / {plan.unit}</span>
+  </div>
+  <p class="pricing-card__breakdown mono">
+    = ₹{plan.perMonth.toLocaleString("en-IN")} a month = ₹{plan.perDay} a day
+  </p>
+  {plan.tagline && <p class="pricing-card__tagline">{plan.tagline}</p>}
+  <ul class="pricing-card__list">
+    {features.map((f) => (
+      <li><i class="fa-solid fa-check check" aria-hidden="true"></i> {f}</li>
+    ))}
+  </ul>
+  <div class="pricing-card__cta">
+    <Button href={ctaHref} variant="primary" block>{ctaLabel}</Button>
+  </div>
+  <p class="pricing-card__foot"><slot name="foot" /></p>
+</div>

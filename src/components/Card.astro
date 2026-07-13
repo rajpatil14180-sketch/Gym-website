@@ -1,0 +1,11 @@
+---
+interface Props {
+  tight?: boolean;
+  class?: string;
+}
+const { tight = false, class: className = "" } = Astro.props;
+---
+
+<div class:list={["card", { "card--tight": tight }, className]}>
+  <slot />
+</div>

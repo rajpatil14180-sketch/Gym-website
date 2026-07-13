@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import PageHero from "../components/PageHero.astro";
+import Placeholder from "../components/Placeholder.astro";
+import PlanRow from "../components/PlanRow.astro";
+import FAQ from "../components/FAQ.astro";
+import CTASection from "../components/CTASection.astro";
+import Button from "../components/Button.astro";
+import { personalTraining } from "../data/pricing";
+import { ptFaqs } from "../data/faqs";
+---
+
+<Base
+  title="Personal Training — Unicorn Fitness"
+  description="1 on 1 coaching built around your body, your schedule, and your goal. Weekly plan reviews, floor support every session."
+>
+  <PageHero
+    eyebrow="Personal Training"
+    title="A Plan Built For You, Not A Template."
+    subhead="Open gym access gets you a coach on the floor. Personal Training gets you a coach who's there for every single session."
+  />
+
+  <Section>
+    <div class="split">
+      <Placeholder label="Coach spotting a member on a lift, 1 on 1 session" class="reveal" />
+      <div class="reveal">
+        <Eyebrow>How It Works</Eyebrow>
+        <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
+          Weekly Coaching. Real Plan Reviews.
+        </h2>
+        <div style="display:flex; flex-direction:column; gap: var(--space-4);">
+          <p class="lead">
+            You get a plan built around your body, your schedule, and your goal — not a printout everyone else
+            gets too.
+          </p>
+          <p class="lead">
+            Your coach is with you every session: correcting form, adjusting the plan as you get stronger, and
+            keeping you honest on the days you don't feel like showing up.
+          </p>
+          <p class="lead">
+            Personal Training sits on top of open gym access — it's not a replacement for membership, it's
+            1 on 1 attention added to it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section alt bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <Eyebrow>Pricing</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Personal Training Packages</h2>
+    </div>
+    <div style="max-width: 640px; margin-inline:auto;">
+      <div class="plan-rows">
+        {personalTraining.map((plan) => (
+          <PlanRow name={plan.name} meta={plan.meta} price={plan.price} />
+        ))}
+      </div>
+      <p class="body-sm reveal" style="text-align:center; margin-top: var(--space-8); color: var(--ash);">
+        Combo packages bundle membership and Personal Training together at a lower combined price.
+      </p>
+      <div style="text-align:center; margin-top: var(--space-8);">
+        <Button href="/contact" variant="primary" size="lg">Talk To A Coach</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div style="text-align:center; margin-bottom: var(--space-12);">
+      <h2 class="h-section reveal">Personal Training, Answered.</h2>
+    </div>
+    <div style="max-width: 800px; margin-inline: auto;">
+      <FAQ items={ptFaqs} />
+    </div>
+  </Section>
+
+  <CTASection heading="Stop Guessing. Get A Plan That Fits You." tagline="First session starts with an assessment." />
+</Base>

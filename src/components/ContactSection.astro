@@ -1,0 +1,127 @@
+---
+import Section from "./Section.astro";
+import Eyebrow from "./Eyebrow.astro";
+import Button from "./Button.astro";
+import { site, waLink } from "../data/site";
+
+interface Props {
+  id?: string;
+  heading?: string;
+  eyebrow?: string;
+}
+
+const { id = "contact", heading = "Claim Your Free Trial Day", eyebrow = "Start Here" } = Astro.props;
+---
+
+<Section id={id} bordered>
+  <div class="contact">
+    <div>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4); margin-bottom: var(--space-8);">
+        {heading}
+      </h2>
+
+      <form class="js-wa-form reveal" novalidate data-wa-base={site.whatsappBase}>
+        <input
+          type="text"
+          name="_hp"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          class="visually-hidden"
+        />
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            autocomplete="name"
+            autocapitalize="words"
+            maxlength="80"
+            aria-describedby="name-error"
+            required
+          />
+          <p class="field__error" id="name-error" role="alert">Please enter your name.</p>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Phone number"
+            autocomplete="tel"
+            inputmode="tel"
+            maxlength="20"
+            aria-describedby="phone-error"
+            required
+          />
+          <p class="field__error" id="phone-error" role="alert">Please enter a valid phone number.</p>
+        </div>
+
+        <div class="field">
+          <label for="want">I want to</label>
+          <select id="want" name="want">
+            <option>Claim a Free Trial Day</option>
+            <option>Book a Gym Tour</option>
+            <option>Buy a Day Pass</option>
+            <option>Personal Training</option>
+            <option>Just get pricing</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Anything we should know?</label>
+          <textarea id="message" name="message" placeholder="Anything we should know? (optional)" maxlength="500"></textarea>
+        </div>
+
+        <Button type="submit" variant="whatsapp" block icon="fa-brands fa-whatsapp">Send via WhatsApp</Button>
+        <p class="form__note">We'll reply on WhatsApp. No spam, no sales pressure.</p>
+      </form>
+    </div>
+
+    <div class="reveal">
+      <div class="contact__map">
+        <iframe
+          data-src={site.address.mapsEmbedSrc}
+          title="Unicorn Fitness location map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="js-lazy-map"
+        ></iframe>
+      </div>
+
+      {site.hoursOpen24_7 && (
+        <div class="contact__status"><span class="status-dot" aria-hidden="true"></span> Open 24 / 7</div>
+      )}
+
+      <div class="contact__detail">
+        <i class="fa-solid fa-location-dot" aria-hidden="true" style="color:var(--accent);margin-top:4px;"></i>
+        <span>{site.address.line1},<br />{site.address.line2}</span>
+      </div>
+
+      <div class="contact__detail">
+        <i class="fa-solid fa-phone" aria-hidden="true" style="color:var(--accent);"></i>
+        <a href={site.phoneHref}>{site.phone}</a>
+      </div>
+
+      <div style="margin-top: var(--space-6);">
+        <Button
+          href={waLink("Hi! I'd prefer to just chat about Unicorn Fitness.")}
+          variant="ghost"
+          block
+          icon="fa-brands fa-whatsapp"
+        >
+          Prefer to just chat? Message us
+        </Button>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script src="../scripts/whatsapp-form.js"></script>
+<script src="../scripts/lazy-map.js"></script>

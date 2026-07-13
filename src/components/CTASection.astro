@@ -1,0 +1,37 @@
+---
+import Section from "./Section.astro";
+import Button from "./Button.astro";
+import { waLink } from "../data/site";
+
+interface Props {
+  heading: string;
+  tagline?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  showWhatsapp?: boolean;
+}
+
+const {
+  heading,
+  tagline = "Yours is free.",
+  ctaLabel = "Claim Your Free Trial Day",
+  ctaHref = "/contact",
+  showWhatsapp = true,
+} = Astro.props;
+---
+
+<Section bordered class="cta-section">
+  <div class="cta-section__bg" aria-hidden="true"></div>
+  <div class="cta-section__content">
+    <h2 class="h-section reveal">{heading}</h2>
+    <p class="cta-section__tagline serif-italic reveal">{tagline}</p>
+    <div class="hero__ctas" style="justify-content:center;">
+      <Button href={ctaHref} variant="primary" size="lg">{ctaLabel}</Button>
+      {showWhatsapp && (
+        <Button href={waLink("Hi! I'd like to know more about Unicorn Fitness.")} variant="text" icon="fa-brands fa-whatsapp">
+          Or just chat on WhatsApp
+        </Button>
+      )}
+    </div>
+  </div>
+</Section>

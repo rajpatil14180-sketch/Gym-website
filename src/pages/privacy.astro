@@ -1,0 +1,98 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import { site } from "../data/site";
+---
+
+<Base
+  title="Privacy Policy — Unicorn Fitness"
+  description="How Unicorn Fitness collects and uses the information you share with us."
+>
+  <Section tight>
+    <div style="max-width: 720px; margin-inline:auto; padding-block: var(--space-16);">
+      <Eyebrow>Legal</Eyebrow>
+      <h1 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-8);">Privacy Policy</h1>
+
+      <p class="body-sm" style="color: var(--ash); margin-bottom: var(--space-8);">
+        {/* NOTE: accurately describes current site behaviour. Have this reviewed by a
+           professional before relying on it for anything beyond the website itself —
+           particularly if you later add analytics, accounts, or payment collection. */}
+        This policy explains what information Unicorn Fitness collects through this website and how it's used.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap: var(--space-6);">
+        <div>
+          <h2 class="h-sub">What we collect</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            When you use the "Claim Your Free Trial Day" form, we ask for your name, phone number, what you're
+            interested in, and an optional message. That's all — no account, no password, no payment details.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">How it's used</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Submitting the form opens WhatsApp with your details prefilled into a message addressed to
+            Unicorn Fitness. The message is sent directly through WhatsApp — we don't store a copy of it on our
+            servers, and it isn't shared with anyone outside Unicorn Fitness. WhatsApp's own privacy policy
+            governs how that message is handled once it reaches WhatsApp.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">How long we keep it</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            We don't hold a separate database of website enquiries — your message lives in the WhatsApp
+            conversation between you and Unicorn Fitness, for as long as that conversation is useful to both of
+            us. If you'd like us to delete it, tell us on WhatsApp and we will.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Your rights</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            You can ask us at any time what information we hold about you, ask us to correct it, or ask us to
+            delete it. Message us on WhatsApp or call {site.phone} and we'll action it directly.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Third party services</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            This site loads fonts from Google Fonts and an embedded Google Map on the contact page. Each of
+            these may see your IP address as a normal part of serving that resource, the same as any website
+            using them. Icons are served directly from this site rather than a third party.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Cookies & tracking</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            We don't currently run analytics, ads, or tracking cookies on this site.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Grievance officer</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            {/* TODO(owner): India's IT Rules expect a named individual here, not just a
+               phone number — replace with the designated grievance officer's name (and
+               email, if you have one) before launch. */}
+            For any privacy complaint or concern, contact Unicorn Fitness directly at
+            <a href={site.phoneHref} class="btn--text"> {site.phone}</a> or on
+            <a href="/contact" class="btn--text"> WhatsApp</a>. We aim to acknowledge concerns within a few days.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="h-sub">Contact us</h2>
+          <p class="lead" style="margin-top: var(--space-3);">
+            Questions about this policy? Reach us at <a href={site.phoneHref} class="btn--text">{site.phone}</a> or
+            on <a href="/contact" class="btn--text">WhatsApp</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Base>

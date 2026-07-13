@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+---
+
+<Base
+  title="Page Not Found — Unicorn Fitness"
+  description="This page doesn't exist. Head back to Unicorn Fitness."
+  noindex
+>
+  <Section tight>
+    <div style="text-align:center; padding-block: var(--space-16);">
+      <p class="h-display" style="font-size: clamp(60px, 14vw, 160px); line-height: 0.9; color: var(--hero-cream);">404</p>
+      <h1 class="h-section" style="margin-top: var(--space-6);">Looks Like You Skipped Leg Day.</h1>
+      <p class="lead" style="margin-top: var(--space-4); max-width: 520px; margin-inline: auto;">
+        This page doesn't exist. Let's get you back on track.
+      </p>
+      <div style="margin-top: var(--space-8);">
+        <Button href="/" variant="primary" size="lg">Back to Home</Button>
+      </div>
+    </div>
+  </Section>
+</Base>
