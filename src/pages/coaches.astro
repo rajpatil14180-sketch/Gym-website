@@ -1,0 +1,67 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import PageHero from "../components/PageHero.astro";
+import Placeholder from "../components/Placeholder.astro";
+import CTASection from "../components/CTASection.astro";
+import { coaches_SAMPLE } from "../data/coaches";
+---
+
+<Base
+  title="Coaches — Unicorn Fitness"
+  description="Real coaches, real certifications, on the floor every day. Meet the people you'll actually train with at Unicorn Fitness."
+>
+  <PageHero
+    eyebrow="The Coaches"
+    title="Who You'll Actually Train With."
+    subhead="Not a rotating cast of whoever's free. Certified coaches who know your name, your goal, and where you're stuck."
+  />
+
+  <!-- COACH GRID -->
+  <Section bordered>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8);">
+      {coaches_SAMPLE.map((coach) => (
+        <div class="card reveal" style="display:flex; flex-direction:column; gap: var(--space-5);">
+          <Placeholder label={coach.photoLabel} />
+          <div>
+            <p class="card__title">{coach.name}</p>
+            <p class="body-sm" style="color: var(--accent); margin-top: var(--space-1);">{coach.role}</p>
+            <p class="body-sm" style="margin-top: var(--space-3);">{coach.bio}</p>
+            {coach.specialties.length > 0 && (
+              <p class="body-sm" style="margin-top: var(--space-3); color: var(--mute);">
+                {coach.specialties.join(" · ")}
+              </p>
+            )}
+            {coach.certifications.length > 0 && (
+              <p class="body-sm" style="margin-top: var(--space-1); color: var(--mute);">
+                {coach.certifications.join(" · ")} — {coach.experienceYears} yrs
+              </p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- PHILOSOPHY / CREDENTIALS BAND -->
+  <Section alt bordered>
+    <div class="split">
+      <div class="reveal">
+        <Eyebrow>How We Coach</Eyebrow>
+        <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
+          You Won't Be Left To Figure It Out Alone.
+        </h2>
+        <p class="lead">
+          Every coach here runs the same starting assessment, tracks the same progress numbers, and is on the
+          floor to answer questions mid-session — not just during a sales tour.
+        </p>
+      </div>
+      <div class="split__img reveal">
+        <Placeholder label="Coach reviewing a member's progress notes on the gym floor" />
+      </div>
+    </div>
+  </Section>
+
+  <CTASection heading="Come Meet The Coaches Yourself." />
+</Base>

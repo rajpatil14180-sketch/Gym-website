@@ -28,23 +28,28 @@ export const journey = [
   },
 ];
 
-export const foundingFifty = [
+// "Why Members Stay" — replaces an earlier band that leaned on brand-new-gym
+// framing (empty floor, early-member pricing), which reads wrong once the
+// site is positioned as an established gym. Same slot/component, reframed as
+// standing commitments. "Locked price, forever" is kept as a real, checkable
+// commitment rather than an early-joiner timing gimmick.
+export const whyMembersStay = [
   {
     title: "Locked price, forever",
-    body: "Join in the first 50 and your rate never goes up. Not next year, not the year after.",
+    body: "Whatever you're paying today is what you pay next year, and the year after. Renewal price hikes aren't a thing here.",
   },
   {
-    title: "First pick of coaching slots",
-    body: "A new gym means empty calendars. You get the prime hours before anyone else takes them.",
+    title: "Coaching, not a keycard",
+    body: "Every plan includes floor coaching and a starting assessment — most gyms charge extra just to have someone check your form.",
   },
   {
-    title: "A gym that's actually empty",
-    body: "No queuing for the bench. No waiting for a rack. This will not be true in six months.",
+    title: "No surprise charges",
+    body: "The price on the plan is the price you pay. No joining fee, no annual \"maintenance\" fee, no fine print.",
   },
 ];
 
 export const trustStats = [
-  { value: "NEW", label: "Equipment, Nobody's Worn It Out" },
+  { value: "0", label: "Excuses We Accept" },
   { value: "1:1", label: "Coaching Included" },
   { value: "24", label: "Hours Open", suffix: "/7" },
   { value: "₹32", label: "A Day" },

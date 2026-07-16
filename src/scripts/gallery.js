@@ -3,9 +3,12 @@ document.querySelectorAll(".js-gallery").forEach((root) => {
   root.dataset.wired = "true";
 
   const filters = Array.from(root.querySelectorAll(".gallery-filter"));
-  const items = Array.from(root.querySelectorAll(".gallery-grid .placeholder"));
+  // Grab both real image buttons (.gallery-item) and placeholder buttons (.placeholder)
+  const items = Array.from(root.querySelectorAll(".gallery-grid .gallery-item, .gallery-grid .placeholder"));
   const lightbox = root.querySelector(".js-lightbox");
   const lightboxLabel = root.querySelector(".js-lightbox-label");
+  const lightboxImg = root.querySelector(".js-lightbox-img");
+  const lightboxPlaceholder = root.querySelector(".js-lightbox-placeholder");
   let visibleItems = items;
   let currentIndex = 0;
 
@@ -27,8 +30,22 @@ document.querySelectorAll(".js-gallery").forEach((root) => {
 
   function updateLightbox() {
     const item = visibleItems[currentIndex];
-    if (!item || !lightboxLabel) return;
-    lightboxLabel.textContent = item.getAttribute("aria-label") || "";
+    if (!item) return;
+
+    const imgSrc = item.dataset.img;
+    const label = item.dataset.label || item.getAttribute("aria-label") || "";
+
+    if (lightboxLabel) lightboxLabel.textContent = label;
+
+    if (imgSrc && lightboxImg) {
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = label;
+      lightboxImg.style.display = "block";
+      if (lightboxPlaceholder) lightboxPlaceholder.style.display = "none";
+    } else {
+      if (lightboxImg) lightboxImg.style.display = "none";
+      if (lightboxPlaceholder) lightboxPlaceholder.style.display = "";
+    }
   }
 
   function openLightbox(item) {

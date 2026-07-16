@@ -23,7 +23,7 @@
   --body: rgba(246, 245, 243, 0.8);
   --charcoal: rgba(246, 245, 243, 0.64);
   --mute: #9a9c9e;
-  --ash: #6e7072;
+  --ash: #888a8c; /* lifted from #6e7072 for WCAG AA — was 3.6-3.98:1, now 5.16-5.71:1 */
 
   /* ---------- colour: accent ---------- */
   --accent: #e8722b;
@@ -36,6 +36,7 @@
   /* ---------- colour: whatsapp / open-now ---------- */
   --wa: #25d366;
   --wa-hover: #2fe374;
+  --on-wa: #06210f;
 
   /* ---------- hero (layered photo/headline composition) ---------- */
   --hero-cream: #ede7da;

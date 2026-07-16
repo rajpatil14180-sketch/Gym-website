@@ -9,6 +9,9 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  /* Replace the default grey/blue tap flash on touch devices with something
+     that matches the brand instead of looking like an unstyled browser default. */
+  -webkit-tap-highlight-color: rgba(232, 114, 43, 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

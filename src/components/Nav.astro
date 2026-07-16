@@ -1,9 +1,9 @@
 ---
-import { site, waLink } from "../data/site";
+import { site } from "../data/site";
 import Button from "./Button.astro";
 
 const currentPath = Astro.url.pathname;
-const isCurrent = (href) => (href === "/" ? currentPath === "/" : currentPath.startsWith(href));
+const isCurrent = (href: string) => (href === "/" ? currentPath === "/" : currentPath.startsWith(href));
 ---
 
 <header class="nav">

@@ -27,10 +27,6 @@ export const homeFaqs = [
 
 export const membershipFaqs = [
   {
-    q: "Is the 20% Monsoon Offer on all plans?",
-    a: "No — the Monsoon Offer applies to the Yearly package only. Half Yearly, Quarterly, and Monthly plans are at their regular listed price.",
-  },
-  {
     q: "What's the difference between the Day Pass and the free trial?",
     a: "The free trial day is a single visit at no cost, open to anyone training with us for the first time. The ₹200 Day Pass is for anyone who wants to train for a single day after that — no membership required.",
   },

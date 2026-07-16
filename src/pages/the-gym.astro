@@ -10,7 +10,7 @@ import { gallery, galleryCategories, equipment, facilities } from "../data/galle
 
 <Base
   title="The Gym — Unicorn Fitness"
-  description="A look at the floor, the equipment, and the facilities at Unicorn Fitness. Open 24/7 in Ghansoli, Navi Mumbai."
+  description="A look at the floor, the equipment, and the facilities at Unicorn Fitness. Open 24/7."
 >
   <PageHero
     eyebrow="The Gym"
@@ -30,7 +30,13 @@ import { gallery, galleryCategories, equipment, facilities } from "../data/galle
 
       <div class="gallery-grid">
         {gallery.map((item) => (
-          <Placeholder as="button" label={item.shot} category={item.category} class="reveal" />
+          item.img ? (
+            <button type="button" class="gallery-item reveal" data-category={item.category} data-img={item.img} data-label={item.shot}>
+              <img src={item.img} alt={item.shot} width="800" height="600" loading="lazy" />
+            </button>
+          ) : (
+            <Placeholder as="button" label={item.shot} category={item.category} class="reveal" />
+          )
         ))}
       </div>
 
@@ -39,11 +45,14 @@ import { gallery, galleryCategories, equipment, facilities } from "../data/galle
           <button type="button" class="lightbox__close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
           <button type="button" class="lightbox__prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
           <button type="button" class="lightbox__next" aria-label="Next photo"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-          <div class="placeholder" style="aspect-ratio: 4 / 3; min-height: 320px; width: 100%;">
-            <span class="placeholder__label" aria-hidden="true">
-              <i class="fa-regular fa-image"></i><br />
-              <span class="js-lightbox-label"></span>
-            </span>
+          <div class="lightbox__content">
+            <img class="js-lightbox-img" src="" alt="" style="width:100%;height:100%;object-fit:contain;display:none;" />
+            <div class="placeholder js-lightbox-placeholder" style="aspect-ratio: 4 / 3; min-height: 320px; width: 100%;">
+              <span class="placeholder__label" aria-hidden="true">
+                <i class="fa-regular fa-image"></i><br />
+                <span class="js-lightbox-label"></span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

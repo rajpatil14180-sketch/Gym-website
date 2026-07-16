@@ -15,5 +15,9 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "astro": "^7.0.7",
     "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }

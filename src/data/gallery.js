@@ -1,17 +1,17 @@
-// TODO: replace every entry's image with a real photo. `shot` describes
-// exactly what to photograph so the owner can commission/take the right shot.
+// Gallery data with image paths. Some entries still have `img: null` until
+// their photos are generated / supplied by the owner.
 export const galleryCategories = ["All", "Floor", "Equipment", "Facilities"];
 
 export const gallery = [
-  { category: "Floor", shot: "Wide shot of the main training floor, empty, morning light" },
-  { category: "Floor", shot: "Free weights area with rack and benches" },
-  { category: "Equipment", shot: "Row of cardio machines" },
-  { category: "Equipment", shot: "Close-up of a loaded barbell on the platform" },
-  { category: "Equipment", shot: "Cable machine / functional training rig" },
-  { category: "Facilities", shot: "Changing room" },
-  { category: "Facilities", shot: "Entrance / reception at night, well lit" },
-  { category: "Floor", shot: "Coach spotting a member mid-lift" },
-  { category: "Facilities", shot: "Water station / hygiene area" },
+  { category: "Floor", shot: "Wide shot of the main training floor, empty, morning light", img: "/assets/img/gallery/floor-wide.png" },
+  { category: "Floor", shot: "Free weights area with rack and benches", img: "/assets/img/gallery/free-weights.png" },
+  { category: "Equipment", shot: "Row of cardio machines", img: "/assets/img/gallery/cardio-row.png" },
+  { category: "Equipment", shot: "Close-up of a loaded barbell on the platform", img: "/assets/img/gallery/barbell-closeup.png" },
+  { category: "Equipment", shot: "Cable machine / functional training rig", img: "/assets/img/gallery/cable-rig.png" },
+  { category: "Facilities", shot: "Changing room", img: "/assets/img/gallery/changing-room.png" },
+  { category: "Facilities", shot: "Entrance / reception at night, well lit", img: null },
+  { category: "Floor", shot: "Coach spotting a member mid-lift", img: null },
+  { category: "Facilities", shot: "Water station / hygiene area", img: null },
 ];
 
 export const equipment = [

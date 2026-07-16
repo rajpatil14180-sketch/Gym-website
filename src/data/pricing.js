@@ -52,7 +52,7 @@ export const membershipPlans = [
     price: 11500,
     perMonth: 958,
     perDay: 32,
-    badge: "MONSOON OFFER · 20% OFF · YEARLY ONLY",
+    badge: "BEST VALUE",
     tagline: "Less than a cup of coffee. For a year of your life back.",
     highlight: true,
   },
@@ -105,17 +105,15 @@ export const personalTraining = [
 export const included = [
   "24/7 access to the floor",
   "Starting fitness assessment",
-  "Floor coaching support during your session",
+  "Floor coaching, every session",
   "Modern equipment & free weights",
   "Clean, hygienic locker rooms & showers",
-  "Expert trainers on the floor",
   "Nutrition guidance (not a full meal plan)",
   "No joining fee, no hidden charges",
 ];
 
 export const notIncluded = [
-  "Personalised 1 on 1 training plan (PT packages sold separately)",
-  "Dedicated personal training sessions (see Personal Training)",
-  "Nutrition meal plans (guidance only, not a diet plan)",
+  "1-on-1 personal training (sold separately — see Personal Training)",
+  "Full nutrition meal plans (guidance only, not a diet plan)",
   "Supplements or gear",
 ];

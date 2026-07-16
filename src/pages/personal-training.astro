@@ -3,13 +3,15 @@ import Base from "../layouts/Base.astro";
 import Section from "../components/Section.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import PageHero from "../components/PageHero.astro";
-import Placeholder from "../components/Placeholder.astro";
+
 import PlanRow from "../components/PlanRow.astro";
 import FAQ from "../components/FAQ.astro";
 import CTASection from "../components/CTASection.astro";
 import Button from "../components/Button.astro";
+import Placeholder from "../components/Placeholder.astro";
 import { personalTraining } from "../data/pricing";
 import { ptFaqs } from "../data/faqs";
+import { transformations_SAMPLE } from "../data/transformations";
 ---
 
 <Base
@@ -24,7 +26,9 @@ import { ptFaqs } from "../data/faqs";
 
   <Section>
     <div class="split">
-      <Placeholder label="Coach spotting a member on a lift, 1 on 1 session" class="reveal" />
+      <div class="split__img reveal">
+        <img src="/assets/img/pt-hero.png" alt="Coach spotting a member during a 1-on-1 personal training session" width="800" height="1000" loading="lazy" />
+      </div>
       <div class="reveal">
         <Eyebrow>How It Works</Eyebrow>
         <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
@@ -45,6 +49,29 @@ import { ptFaqs } from "../data/faqs";
           </p>
         </div>
       </div>
+    </div>
+  </Section>
+
+  <!-- TRANSFORMATIONS (sample data — see data/transformations.js) -->
+  <Section bordered>
+    <div style="text-align:center; margin-bottom: var(--space-16);">
+      <Eyebrow>What Coaching Changes</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4);">Not Just Before And After.</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap: var(--space-16);">
+      {transformations_SAMPLE.map((t, i) => (
+        <div class:list={["split", { "split--reverse": i % 2 === 1 }]}>
+          <div class="reveal" style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <Placeholder label={t.beforeLabel} />
+            <Placeholder label={t.afterLabel} />
+          </div>
+          <div class="reveal">
+            <p class="h-sub" style="color: var(--accent);">{t.stat}</p>
+            <p class="lead" style="margin-top: var(--space-4);">"{t.quote}"</p>
+            <p class="body-sm" style="margin-top: var(--space-3); color: var(--mute);">— {t.name}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </Section>
 

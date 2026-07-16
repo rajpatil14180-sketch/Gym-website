@@ -3,20 +3,15 @@ import Base from "../layouts/Base.astro";
 import Section from "../components/Section.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import PageHero from "../components/PageHero.astro";
-import Placeholder from "../components/Placeholder.astro";
+
 import StatCounter from "../components/StatCounter.astro";
 import CTASection from "../components/CTASection.astro";
-import { trainers } from "../data/trainers";
 import { trustStats } from "../data/journey";
-
-// trainers.js ships with TODO placeholders until the owner supplies real
-// coach info — never show raw "TODO:" text to site visitors.
-const realTrainers = trainers.filter((t) => !t.name.startsWith("TODO"));
 ---
 
 <Base
   title="About Us — Unicorn Fitness"
-  description="Why Unicorn Fitness exists, how we coach, and who you'll train with. 24/7 gym in Ghansoli, Navi Mumbai."
+  description="Why Unicorn Fitness exists, how we coach, and who you'll train with. Open 24/7."
 >
   <PageHero
     eyebrow="About Us"
@@ -26,7 +21,9 @@ const realTrainers = trainers.filter((t) => !t.name.startsWith("TODO"));
 
   <Section>
     <div class="split">
-      <Placeholder label="Head coach on the floor, walking a new member through their first session" class="reveal" />
+      <div class="split__img reveal">
+        <img src="/assets/img/about-hero.png" alt="Head coach walking a new member through their first session" width="800" height="1000" loading="lazy" />
+      </div>
       <div class="reveal">
         <Eyebrow>Why We Started</Eyebrow>
         <h2 class="h-section" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
@@ -54,28 +51,21 @@ const realTrainers = trainers.filter((t) => !t.name.startsWith("TODO"));
     </div>
   </Section>
 
-  {realTrainers.length > 0 && (
-    <Section bordered>
-      <div style="text-align:center; margin-bottom: var(--space-16);">
-        <Eyebrow>The Coaches</Eyebrow>
-        <h2 class="h-section reveal" style="margin-top: var(--space-4);">Who You'll Actually Train With.</h2>
-      </div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8);">
-        {realTrainers.map((trainer) => (
-          <div class="card reveal" style="display:flex; flex-direction:column; gap: var(--space-5);">
-            <Placeholder label={trainer.role ? `Portrait of ${trainer.name}, ${trainer.role}` : `Portrait of ${trainer.name}`} />
-            <div>
-              <p class="card__title">{trainer.name}</p>
-              {trainer.role && (
-                <p class="body-sm" style="color: var(--accent); margin-top: var(--space-1);">{trainer.role}</p>
-              )}
-              <p class="body-sm" style="margin-top: var(--space-3);">{trainer.bio}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  )}
+  <!-- Full coach roster now lives on /coaches — this is a short teaser only. -->
+  <Section bordered>
+    <div style="text-align:center;">
+      <Eyebrow>The Coaches</Eyebrow>
+      <h2 class="h-section reveal" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">
+        Who You'll Actually Train With.
+      </h2>
+      <p class="lead reveal" style="max-width: 600px; margin-inline: auto;">
+        Every coach here is certified, on the floor every day, and easy to find when you need them.
+      </p>
+      <a href="/coaches" class="btn--text" style="margin-top: var(--space-6); display:inline-block;">
+        Meet all our coaches →
+      </a>
+    </div>
+  </Section>
 
   <CTASection heading="Come Meet The Coaches Yourself." tagline="First day's free." />
 </Base>
